@@ -112,7 +112,7 @@ Vue.component('attribution', {
     `,
     data: function() {
         return {
-            show: true
+            show: false
         }
     },
     methods: {
