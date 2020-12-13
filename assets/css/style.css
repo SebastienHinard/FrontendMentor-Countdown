@@ -1,0 +1,423 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap');
+
+*,
+:after,
+:before {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+:root {
+    /* COLORS */
+    --grayishBlue: hsl(237, 18%, 59%);
+    --softRed: hsl(345, 95%, 68%);
+    --white: hsl(0, 0%, 100%);
+    --darkDesaturatedBlue: hsl(236, 21%, 26%);
+    --veryDarkBlue: hsl(235, 16%, 14%);
+    --veryDark: hsl(234, 17%, 12%);
+    /* SIZES */
+    --mainTitleFontSize: 1.3em;
+    --mainTitleMargin: 7.5em 0 2.5em 0;
+    --countdownSize: 64px;
+    --countdownDataSize: 2.2em;
+    --countdownLabelSize: 0.5em;
+    --countDownHoleSize: 6px;
+    --countDownHoleOffet: -3px;
+    --countdownShadowSize: 5px;
+    --countdownMargin: 10px;
+    --countdownValueMarginBottom: 1em;
+    --socialMarginBottom: 50px;
+}
+
+html,
+body,
+#app {
+    height: 100%;
+}
+
+body {
+    font-size: 14px;
+    font-family: 'Red Hat Text', sans-serif;
+    background: var(--veryDark);
+    color: var(--white);
+    background: url('../images/bg-stars.svg') var(--veryDark);
+    -webkit-animation: scrollStars 120s linear infinite;
+            animation: scrollStars 120s linear infinite;
+}
+
+body:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: -webkit-gradient(linear,left top, left bottom,from(var(--veryDarkBlue)),to(var(--softRed)));
+    background: -o-linear-gradient(var(--veryDarkBlue),var(--softRed));
+    background: linear-gradient(var(--veryDarkBlue),var(--softRed));
+    opacity: 0.1;
+    z-index: -2;
+}
+
+@-webkit-keyframes scrollStars {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: 200%;
+    }
+}
+
+@keyframes scrollStars {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: 200%;
+    }
+}
+
+#app {
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background: url('../images/pattern-hills.svg') repeat-x bottom;
+    background-size: 2879px;
+    -webkit-animation: scrollHills 60s infinite linear;
+            animation: scrollHills 60s infinite linear;
+}
+
+@-webkit-keyframes scrollHills {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: -2879px;
+    }
+}
+
+@keyframes scrollHills {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: -2879px;
+    }
+}
+
+.main-title {
+    font-size: var(--mainTitleFontSize);
+    letter-spacing: .3em;
+    max-width: 80%;
+    text-align: center;
+    text-transform: uppercase;
+    margin: var(--mainTitleMargin);
+}
+
+.countdown {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.countdown__block {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: var(--countdownMargin);
+}
+
+.countdown__value {
+    position: relative;
+    background: var(--darkDesaturatedBlue);
+    height: var(--countdownSize);
+    width: var(--countdownSize);
+    border-radius: 8px;
+    margin-bottom: var(--countdownValueMarginBottom);
+    overflow: hidden;
+    -webkit-box-shadow: 0 var(--countdownShadowSize) 0 var(--veryDark);
+            box-shadow: 0 var(--countdownShadowSize) 0 var(--veryDark);
+}
+
+.countdown__value--top,
+.countdown__value--bottom {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 50%;
+    overflow: hidden;
+    background: var(--darkDesaturatedBlue);
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+
+.countdown__value--top {
+    top: 0;
+    -webkit-filter: brightness(85%);
+            filter: brightness(85%);
+    border-radius: 8px 8px 0 0;
+    -webkit-transform-origin: bottom;
+        -ms-transform-origin: bottom;
+            transform-origin: bottom;
+}
+
+.countdown__value--bottom {
+    bottom: 0;
+    border-radius: 0 0 8px 8px;
+    -webkit-transform-origin: top;
+        -ms-transform-origin: top;
+            transform-origin: top;
+    -webkit-animation: flipOut 1s forwards;
+            animation: flipOut 1s forwards;
+}
+
+.countdown__value--bottom--new {
+    -webkit-animation: unset;
+            animation: unset;
+}
+
+.countdown__value--top--new {
+    -webkit-animation: flipIn 1s forwards;
+            animation: flipIn 1s forwards;
+}
+
+.countdown__value:before,
+.countdown__value:after,
+.countdown__value--top:before,
+.countdown__value--top:after,
+.countdown__value--bottom:before,
+.countdown__value--bottom:after {
+    content: "";
+    position: absolute;
+    width: var(--countDownHoleSize);
+    height: var(--countDownHoleSize);
+    background: var(--veryDark);
+    border-radius: 50%;
+}
+
+.countdown__value:before {
+    top: calc(50% + var(--countDownHoleOffet));
+    left: var(--countDownHoleOffet);
+}
+
+.countdown__value:after {
+    top: calc(50% + var(--countDownHoleOffet));
+    right: var(--countDownHoleOffet);
+}
+
+.countdown__value--top:before {
+    bottom: var(--countDownHoleOffet);
+    left: var(--countDownHoleOffet);
+}
+
+.countdown__value--top:after {
+    bottom: var(--countDownHoleOffet);
+    right: var(--countDownHoleOffet);
+}
+
+.countdown__value--bottom:before {
+    top: var(--countDownHoleOffet);
+    left: var(--countDownHoleOffet);
+}
+
+.countdown__value--bottom:after {
+    top: var(--countDownHoleOffet);
+    right: var(--countDownHoleOffet);
+}
+
+.countdown__value--top span,
+.countdown__value--bottom span {
+    font-size: var(--countdownDataSize);
+    color: var(--softRed);
+    position: absolute;
+    left: 50%;
+}
+
+.countdown__value--top span {
+    bottom: 0;
+    -webkit-transform: translateX(-50%) translateY(50%);
+        -ms-transform: translateX(-50%) translateY(50%);
+            transform: translateX(-50%) translateY(50%);
+}
+
+.countdown__value--bottom span {
+    top: 0;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+}
+
+@-webkit-keyframes flipOut {
+    from {
+        -webkit-transform: rotateX(0);
+                transform: rotateX(0);
+    }
+    to {
+        -webkit-transform: rotateX(180deg);
+                transform: rotateX(180deg);
+    }
+}
+
+@keyframes flipOut {
+    from {
+        -webkit-transform: rotateX(0);
+                transform: rotateX(0);
+    }
+    to {
+        -webkit-transform: rotateX(180deg);
+                transform: rotateX(180deg);
+    }
+}
+
+@-webkit-keyframes flipIn {
+    from {
+        -webkit-transform: rotateX(180deg);
+                transform: rotateX(180deg);
+    }
+    to {
+        -webkit-transform: rotateX(0);
+                transform: rotateX(0);
+    }
+}
+
+@keyframes flipIn {
+    from {
+        -webkit-transform: rotateX(180deg);
+                transform: rotateX(180deg);
+    }
+    to {
+        -webkit-transform: rotateX(0);
+                transform: rotateX(0);
+    }
+}
+
+.countdown__label {
+    text-transform: uppercase;
+    font-size: var(--countdownLabelSize);
+    letter-spacing: .3em;
+    color: var(--grayishBlue);
+}
+
+.social {
+    list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: auto;
+    margin-bottom: var(--socialMarginBottom);
+}
+
+.social__item {
+    margin: 0 1em;
+}
+
+.social__item svg path {
+    -webkit-transition: 0.15s ease-in-out;
+    -o-transition: 0.15s ease-in-out;
+    transition: 0.15s ease-in-out;
+}
+
+.social__item:hover svg path,
+.social__item a:focus svg path {
+    fill: var(--softRed);
+}
+
+.attribution__toggle {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    cursor: pointer;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border: 0;
+    width: 2em;
+    height: 2em;
+    background: var(--darkDesaturatedBlue);
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 50%;
+    color: var(--grayishBlue);
+    -webkit-box-shadow: 0 var(--countdownShadowSize) 0  var(--veryDark);
+            box-shadow: 0 var(--countdownShadowSize) 0  var(--veryDark);
+    -webkit-transition: 0.15s ease-in-out;
+    -o-transition: 0.15s ease-in-out;
+    transition: 0.15s ease-in-out;
+}
+
+.attribution__toggle:hover,
+.attribution__toggle:focus {
+    -webkit-transform: translateY(-4px);
+        -ms-transform: translateY(-4px);
+            transform: translateY(-4px);
+}
+
+.attribution__content {
+    position: absolute;
+    right: 4em;
+    bottom: 1em;
+    padding: 1em;
+    border-radius: 8px;
+    background: var(--darkDesaturatedBlue);
+    -webkit-box-shadow: 0 var(--countdownShadowSize) 0  var(--veryDark);
+            box-shadow: 0 var(--countdownShadowSize) 0  var(--veryDark);
+    -webkit-transform: translateX(200%);
+        -ms-transform: translateX(200%);
+            transform: translateX(200%);
+    -webkit-transition: 0.15s ease-in-out;
+    -o-transition: 0.15s ease-in-out;
+    transition: 0.15s ease-in-out;
+}
+
+.attribution__content.visible {
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+}
+
+.attribution__content a {
+    color: var(--softRed);
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    :root {
+        --mainTitleFontSize: 1.6em;
+        --mainTitleMargin: 6.7em 0 3.7em 0;
+        --countdownSize: 140px;
+        --countdownDataSize: 5.5em;
+        --countdownLabelSize: 1em;
+        --countDownHoleSize: 12px;
+        --countDownHoleOffet: -6px;
+        --countdownShadowSize: 10px;
+        --countdownMargin: 20px;
+        --countdownValueMarginBottom: 1.9em;
+        --socialMarginBottom: 100px;
+    }
+}
